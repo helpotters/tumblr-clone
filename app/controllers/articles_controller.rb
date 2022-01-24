@@ -36,9 +36,10 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
+    @article.comments.clear                    # << add this line
     @article.destroy
 
-    redirect_to_root_path
+    redirect_to root_path
   end
 
   private
